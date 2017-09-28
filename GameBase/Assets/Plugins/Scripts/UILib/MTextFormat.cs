@@ -2,8 +2,9 @@
 using System.Collections;
 using UnityEngine.UI;
 
-public class MTextFormat:MonoBehaviour{
-    
+public class MTextFormat : MonoBehaviour
+{
+
     /**
      * oColor 描边颜色
      * oSize 描边大小
@@ -16,6 +17,6 @@ public class MTextFormat:MonoBehaviour{
 
     public void Start()
     {
-        gameObject.GetComponent<Text>().text = LocalString.GetWord(textKey);
+        //gameObject.GetComponent<Text>().text = LocalString.GetWord(textKey);
     }
 }
