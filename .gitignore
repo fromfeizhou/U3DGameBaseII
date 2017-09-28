@@ -32,8 +32,8 @@ sysinfo.txt
 # Builds
 *.apk
 *.unitypackage
-GameBase/Temp/
-GameBase/Library/
+/GameBase/Temp/
+/GameBase/Library/
 
 GameBase/Library/CurrentLayout.dwlt
 GameBase/Library/expandedItems
