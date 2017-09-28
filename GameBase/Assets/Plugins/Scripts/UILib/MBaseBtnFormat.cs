@@ -74,6 +74,7 @@ public class MBaseBtnFormat : MonoBehaviour
     {
         if (_onDown)
         {
+            transform.GetComponent<RectTransform>().localScale = new Vector3(1.0f, 1.0f, 1.0f);
             resetBtnState();
             OnClick();
         }
@@ -88,6 +89,10 @@ public class MBaseBtnFormat : MonoBehaviour
             if (actionType == 1)
             {
                 doExitAction();
+            }
+            else
+            {
+                transform.GetComponent<RectTransform>().localScale = new Vector3(1.0f, 1.0f, 1.0f);
             }
         }
     }
@@ -117,11 +122,6 @@ public class MBaseBtnFormat : MonoBehaviour
     //重置按钮状态
     private void resetBtnState()
     {
-        //带缓动按钮 不需要恢复缩放
-        if (actionType != 1)
-        {
-            transform.GetComponent<RectTransform>().localScale = new Vector3(1.0f, 1.0f, 1.0f);
-        }
         //选中按钮特殊处理
         if (isSelectedBtn)
         {
