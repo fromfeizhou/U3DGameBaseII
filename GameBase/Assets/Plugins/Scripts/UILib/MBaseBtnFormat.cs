@@ -1,9 +1,9 @@
 ﻿using UnityEngine;
 using System.Collections;
 using UnityEngine.UI;
-using UnityEngine.EventSystems;
 using UnityEngine.Events;
 using DG.Tweening;
+using UnityEngine.EventSystems;
 public enum MButtonState
 {
     NORMAL,
@@ -11,7 +11,7 @@ public enum MButtonState
     ENABLE
 }
 
-public class MBaseBtnFormat : MonoBehaviour
+public class MBaseBtnFormat : MonoBehaviour,IPointerDownHandler,IPointerUpHandler,IPointerExitHandler,IPointerClickHandler
 {
 
     [HideInInspector]
@@ -31,13 +31,9 @@ public class MBaseBtnFormat : MonoBehaviour
 
     public virtual void Start()
     {
-        //AssetManager.LoadAsset(GetBtnComResPath(), new UnityAction<Object, string>(ComCallBack), typeof(Sprite));
         _comSp = GetComponent<Image>().sprite;
+        AssetManager.LoadAsset(GetBtnComResPath(), new UnityAction<Object, string>(ComCallBack), typeof(Sprite));
         AssetManager.LoadAsset(GetBtnSelResPath(), new UnityAction<Object, string>(SelCallBack), typeof(Sprite));
-
-        EventTriggerListener.Get(gameObject).onDown = OnDown;
-        EventTriggerListener.Get(gameObject).onUp = OnUp;
-        EventTriggerListener.Get(gameObject).onExit = OnExit;
     }
 
     //设置按钮选中状态
@@ -56,7 +52,7 @@ public class MBaseBtnFormat : MonoBehaviour
     }
 
     //按钮按下回调
-    private void OnDown(GameObject go)
+    public virtual void OnPointerDown(PointerEventData eventData)
     {
         if (_isAction) return;
 
@@ -70,18 +66,12 @@ public class MBaseBtnFormat : MonoBehaviour
     }
 
     // 当按钮抬起的时候自动调用此方法  
-    private void OnUp(GameObject go)
+    public virtual void OnPointerUp(PointerEventData eventData)
     {
-        if (_onDown)
-        {
-            transform.GetComponent<RectTransform>().localScale = new Vector3(1.0f, 1.0f, 1.0f);
-            resetBtnState();
-            OnClick();
-        }
     }
 
     // 当按钮失去焦点
-    private void OnExit(GameObject go)
+    public virtual void OnPointerExit(PointerEventData eventData)
     {
         if (_onDown)
         {
@@ -94,6 +84,17 @@ public class MBaseBtnFormat : MonoBehaviour
             {
                 transform.GetComponent<RectTransform>().localScale = new Vector3(1.0f, 1.0f, 1.0f);
             }
+        }
+    }
+
+    //按钮click触发
+    public virtual void OnPointerClick(PointerEventData eventData)
+    {
+        if (_onDown)
+        {
+            transform.GetComponent<RectTransform>().localScale = new Vector3(1.0f, 1.0f, 1.0f);
+            resetBtnState();
+            OnClick();
         }
     }
 
@@ -116,7 +117,10 @@ public class MBaseBtnFormat : MonoBehaviour
     private void OnClick()
     {
         Debug.Log("OnClick");
-        Selected = !Selected;
+        if (isSelectedBtn)
+        {
+            Selected = !Selected;
+        }
     }
 
     //重置按钮状态

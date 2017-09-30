@@ -14,7 +14,7 @@ public class MTextBtnFormat : MBaseBtnFormat
     [HideInInspector]
     public string style = "";
 
-    override public void Start()
+    public override void Start()
     {
         base.Start();
         gameObject.GetComponentInChildren<Text>().text = LocalString.GetWord(textKey);

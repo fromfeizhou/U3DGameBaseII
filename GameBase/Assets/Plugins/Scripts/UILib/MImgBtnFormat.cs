@@ -9,10 +9,10 @@ public class MImgBtnFormat : MBaseBtnFormat
     [HideInInspector]
     public string imgLabName = "queding";
 
-    override public void Start()
+    public override void Start()
     {
         base.Start();
-        //AssetManager.LoadAsset(GetBtnLabResPath(), new UnityAction<Object, string>(ImgLabCallBack));
+        AssetManager.LoadAsset(GetBtnLabResPath(), new UnityAction<Object, string>(ImgLabCallBack));
 
     }
     //返回按钮 文本资源地址(resourcesLib目录下)
