@@ -9,7 +9,7 @@ public class MScrollViewFormat : MonoBehaviour {
     private int _initMax;
     private Transform _container;
 	void Start () {
-        _container = transform.FindChild("Container");
+        _container = transform.Find("Container");
 	}
 	
 	// Update is called once per frame
