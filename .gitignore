@@ -34,12 +34,3 @@ sysinfo.txt
 *.unitypackage
 /GameBase/Temp/
 /GameBase/Library/
-
-GameBase/Library/CurrentLayout.dwlt
-GameBase/Library/expandedItems
-GameBase/Library/assetDatabase3
-GameBase/Library/metadata/d4/d427c29d53e10244284b6af7449a2734
-GameBase/Library/ScriptAssemblies/Assembly-CSharp-Editor.dll
-GameBase/Library/ScriptAssemblies/Assembly-CSharp-Editor.dll.mdb
-GameBase/Library/ScriptAssemblies/Assembly-CSharp-firstpass.dll
-GameBase/Library/ScriptAssemblies/Assembly-CSharp-firstpass.dll.mdb
